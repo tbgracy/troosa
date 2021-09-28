@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  bool hideFilter;
-  String sortFilter;
-  void radioTestFunction(index) => print('$index');
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +15,6 @@ class Home extends StatelessWidget {
         actions: [
           PopupMenuButton(
             icon: Icon(Icons.filter_alt),
-            padding: EdgeInsets.all(0.7),
             itemBuilder: (BuildContext context) {
               /* return [
                 PopupMenuItem(child: Text('Hide completed')),
@@ -30,27 +25,17 @@ class Home extends StatelessWidget {
                 PopupMenuItem(child: Text('Sort by Tag')),
               ]; */
               return [
-                PopupMenuItem(
-                  child: Column(children: [
-                    Row(
-                      children: [
-                        Text('Hide completed'),
-                        Radio(value: true, groupValue: hideFilter, onChanged: (index) => radioTestFunction(index))
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text('Hide forgotten'),
-                      ],
-                    ),
-                  ],), 
-                  enabled: false,),
-                // PopupMenuItem(child: , enabled: false,),
+                PopupMenuItem(child: Text('Hide completed')),
+                PopupMenuItem(child: Text('Hide forgotten')),
+                PopupMenuItem(child: Divider(), height: 0.1,),
+                PopupMenuItem(child: Text('Sort by Name')),
+                PopupMenuItem(child: Text('Sort by Date')),
+                PopupMenuItem(child: Text('Sort by Tag')),
               ];
             },
+            tooltip: 'Filter',
           ),
           PopupMenuButton(
-            padding: EdgeInsets.all(2.0),
             icon: Icon(Icons.more_vert),
             itemBuilder: (BuildContext context) {
               return [
@@ -61,18 +46,20 @@ class Home extends StatelessWidget {
                 // PopupMenuItem(child: Divider()),
               ];
             },
+            tooltip: "More",
           ),
         ],
       ),
       body: Stack(
         children: [
           Image(
-            image: AssetImage('assets/images/ariary.png'), 
+            image: AssetImage('assets/images/bg.jpg'), 
             fit: BoxFit.cover, 
-            height: MediaQuery.of(context).size.height,),
+            height: MediaQuery.of(context).size.height,
+          ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.add), onPressed: () {}, tooltip: 'Ajouter une dette',),
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.add), onPressed: () {}, tooltip: 'Add a debt',),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
