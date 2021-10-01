@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:troosa/widgets/debt_tile.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -57,6 +58,12 @@ class Home extends StatelessWidget {
             fit: BoxFit.cover, 
             height: MediaQuery.of(context).size.height,
           ),
+          ListView.builder(
+            itemCount: troosaItem.length,
+            itemBuilder: (BuildContext context, int index) {
+              return DebtTileWidget(index: index);
+            },
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(child: Icon(Icons.add), onPressed: () {}, tooltip: 'Add a debt',),
