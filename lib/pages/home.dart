@@ -8,8 +8,13 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/avatar.png'),
+          child: GestureDetector(  // Meant to open a drawer for seeing/modifying user info
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/avatar.png'),
+            ),
+            onTap: () {
+              print('taptapsend');
+            },
           ),
         ),
         title: Text('troosa'),
@@ -17,18 +22,10 @@ class Home extends StatelessWidget {
           PopupMenuButton(
             icon: Icon(Icons.filter_alt),
             itemBuilder: (BuildContext context) {
-              /* return [
-                PopupMenuItem(child: Text('Hide completed')),
-                PopupMenuItem(child: Text('Hide forgotten')),
-                PopupMenuItem(child: Divider(), height: 0,),
-                PopupMenuItem(child: Text('Sort by Name')),
-                PopupMenuItem(child: Text('Sort by Date')),
-                PopupMenuItem(child: Text('Sort by Tag')),
-              ]; */
               return [
                 PopupMenuItem(child: Text('Hide completed')),
                 PopupMenuItem(child: Text('Hide forgotten')),
-                PopupMenuItem(child: Divider(), height: 0.1,),
+                PopupMenuItem(child: Divider(), height: 0.1, enabled: false,),
                 PopupMenuItem(child: Text('Sort by Name')),
                 PopupMenuItem(child: Text('Sort by Date')),
                 PopupMenuItem(child: Text('Sort by Tag')),
