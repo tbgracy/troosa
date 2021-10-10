@@ -13,7 +13,7 @@ class Home extends StatelessWidget {
               backgroundImage: AssetImage('assets/images/avatar.png'),
             ),
             onTap: () {
-              print('taptapsend');
+              print('taptapsend x)');
             },
           ),
         ),
@@ -39,12 +39,16 @@ class Home extends StatelessWidget {
               return [
                 PopupMenuItem(child: Text('Buddy list')),
                 PopupMenuItem(child: Text('Graphs/Summaries')),
-                PopupMenuItem(child: Text('Help')),
-                PopupMenuItem(child: Text('About')),
+                PopupMenuItem(child: Text('Settings'), value: 'settings',),
+                PopupMenuItem(child: Text('Help'), value: 'help',),
+                PopupMenuItem(child: Text('About'), value: 'about',),
                 // PopupMenuItem(child: Divider()),
               ];
             },
             tooltip: "More",
+            onSelected: (valueSelected) {
+              Navigator.pushNamed(context, '/$valueSelected');
+            },
           ),
         ],
       ),
@@ -63,8 +67,37 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.add), onPressed: () {}, tooltip: 'Add a debt',),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add), 
+        onPressed: () {
+          showDialog(
+            context: context, 
+            builder: (context) {
+              return AlertDialog(
+                content: Text('This is just a test'),
+                actions: [
+                  TextButton(
+                    onPressed: () {}, 
+                    child: Row(
+                      children: [
+                        Text('Cancel'),
+                        Icon(Icons.close),
+                      ],
+                    )),
+                    TextButton(
+                      onPressed: () {}, 
+                      child: Row(
+                        children: [
+                          Text('Add'),
+                          Icon(Icons.check),
+                        ],
+                      ))
+                ],
+              ); 
+            });
+        }, 
+        tooltip: 'Add a debt',),
     );
   }
 }

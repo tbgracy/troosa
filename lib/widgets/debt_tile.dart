@@ -15,11 +15,10 @@ class DebtTileWidget extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.white
+        color: Colors.white,
       ),
-      // color: Gradient(colors: colors),
       child: ListTile(
-        shape: StadiumBorder(),
+        // shape: StadiumBorder(),
         title: Text('${troosaItem[index].amount}'),
         subtitle: Text('${troosaItem[index].date}'),
         trailing: CircleAvatar(
