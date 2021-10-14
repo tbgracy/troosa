@@ -75,7 +75,18 @@ class Home extends StatelessWidget {
             context: context, 
             builder: (context) {
               return AlertDialog(
-                content: Text('This is just a test'),
+                content: Center(
+                  child: Form(
+                    child: Column(
+                      children: [
+                        TextFormField(
+
+                        ),
+                        TextFormField(),
+                      ],
+                    ),
+                  ),
+                ),
                 actions: [
                   TextButton(
                     onPressed: () {}, 
